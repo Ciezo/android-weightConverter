@@ -11,6 +11,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     double conversion_rate = 2.2;
@@ -46,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
                 // Fetch the weight entered by the user as an input
                 double tmp_weight = Double.parseDouble(weight.getText().toString());
 
+                // Formatting the precision values (decimal values)
+                DecimalFormat df = new DecimalFormat("#.#");
+
                 // Check if any of the buttons inside the radio group is checked (selected)
                 if (radioGroup.getCheckedRadioButtonId() == -1) {
                     // no radio buttons are selected
@@ -56,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                         if (tmp_weight <= 500) {
                             // @todo Pounds to Kilograms convert
                             double conv_weight = tmp_weight/conversion_rate;
-                            result.setText("Kilograms: "+ conv_weight);
+                            result.setText("Kilograms: "+ df.format(conv_weight));
                         }
                         else {
                             // Display a Toast message when input validation is false
@@ -68,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                         if (tmp_weight <= 225) {
                             // @todo Kilograms to Pounds convert
                             double conv_weight = tmp_weight*conversion_rate;
-                            result.setText("Pounds: "+ conv_weight);
+                            result.setText("Pounds: "+ df.format(conv_weight));
                         }
                         else {
                             Toast.makeText(MainActivity.this, "Kilograms must be less than 225", Toast.LENGTH_LONG).show();
