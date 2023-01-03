@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                             result.setText("Kilograms: "+ conv_weight);
                         }
                         else {
+                            // Display a Toast message when input validation is false
                             Toast.makeText(MainActivity.this, "Pounds must be less than 500", Toast.LENGTH_LONG).show();
                         }
                     }
